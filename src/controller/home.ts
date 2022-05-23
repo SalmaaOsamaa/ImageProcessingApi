@@ -21,7 +21,7 @@ const resize = async(
 try{
     const imagePath = `${f}${w}x${h}.jpg`;
     const resizePath = `./public/${f}${w}x${h}.jpg`;
-    const imagePathExists = await fileExists(path.join(""));
+    const imagePathExists = await fileExists(path.join("public", imagePath));
     if(imagePathExists){
         res.sendFile(`/${imagePath}`, {root:path.join("./public")});
     } else {
