@@ -7,8 +7,8 @@
     "start": "nodemon src/index.ts",
     "build": "npx tsc",
     "test": "npm run build",
-    "lint": "eslint .--ext .ts --fix",
-    "prettier": "prettier --config .prettierc src/**/*.ts --write"
+    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "prettier": "eslint src/app.ts"
   },
   "keywords": [],
   "author": "",
