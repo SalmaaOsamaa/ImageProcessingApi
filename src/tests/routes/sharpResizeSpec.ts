@@ -8,7 +8,6 @@ describe("Sharp ResizeImage", ()=>{
         const height =100;
         const width = 100;
         const resizedImgPath =  `./public/${fileName}${height}x${height}.jpg`;
-
         const res = await sharpResize(fileName,height, width);
         res.toFile(resizedImgPath, (err:Error) =>{
             expect(err.message).toBeDefined();
@@ -20,6 +19,3 @@ describe("Sharp ResizeImage", ()=>{
     });
 });
 
-function expectAsync(arg0: Promise<import("sharp").Sharp>) {
-    throw new Error("Function not implemented.");
-}

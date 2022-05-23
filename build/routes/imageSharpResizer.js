@@ -15,9 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sharpResize = void 0;
 const sharp_1 = __importDefault(require("sharp"));
 const sharpResize = (file, h, w) => __awaiter(void 0, void 0, void 0, function* () {
-    const buffer = ``;
-    const image = yield (0, sharp_1.default)(buffer);
-    const resizeImage = yield image.resize(w, h);
+    const image = (0, sharp_1.default)(file);
+    const resizeImage = image.resize(w, h);
     return resizeImage;
 });
 exports.sharpResize = sharpResize;

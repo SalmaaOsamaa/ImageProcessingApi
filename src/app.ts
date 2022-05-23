@@ -19,7 +19,6 @@ app.get("/", (req:Request, res:Response): void =>{
 });
 
 app.listen(PORT, ():void=>{console.log("server is running on port 8000")});
-
-app.use(errorHandler);
+// app.use(errorHandler);
 
 module.exports = app;

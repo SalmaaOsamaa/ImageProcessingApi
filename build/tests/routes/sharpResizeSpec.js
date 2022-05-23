@@ -29,6 +29,3 @@ describe("Sharp ResizeImage", () => {
         yield expectAsync((0, imageSharpResizer_1.default)("image", 500, 500)).toBeResolved();
     }));
 });
-function expectAsync(arg0) {
-    throw new Error("Function not implemented.");
-}

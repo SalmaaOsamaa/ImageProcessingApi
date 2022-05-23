@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-nocheck
 const express_1 = __importDefault(require("express"));
 const routers_1 = __importDefault(require("./routers"));
-const error_1 = __importDefault(require("./middleware/error"));
 const logger_1 = __importDefault(require("./middleware/logger"));
 const app = (0, express_1.default)();
 const PORT = 8000;
@@ -19,5 +18,5 @@ app.get("/", (req, res) => {
     res.send("hello");
 });
 app.listen(PORT, () => { console.log("server is running on port 8000"); });
-app.use(error_1.default);
+// app.use(errorHandler);
 module.exports = app;

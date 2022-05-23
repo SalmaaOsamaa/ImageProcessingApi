@@ -21,28 +21,33 @@ const imageSharpResizer_1 = __importDefault(require("../routes/imageSharpResizer
 const resize = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { filename, height, width } = req.query;
     const file = filename;
-    const h = height ? parseInt(height, 15) : null;
-    const w = width ? parseInt(width, 15) : null;
+    const h = height ? parseInt(height, 10) : null;
+    const w = width ? parseInt(width, 10) : null;
     try {
-        const imagePath = `${f}${w}x${h}.jpg`;
-        const resizePath = `./public/${f}${w}x${h}.jpg`;
-        const imagePathExists = yield (0, fileExists_1.fileExists)(path_1.default.join("public", imagePath));
+        console.log(w, h);
+        const imagePath = `${file}${w}x${h}.jpg`;
+        const resizePath = path_1.default.join('public', imagePath);
+        const imagePathExists = yield (0, fileExists_1.fileExists)(path_1.default.join('public', imagePath));
         if (imagePathExists) {
-            res.sendFile(`/${imagePath}`, { root: path_1.default.join("./public") });
+            res.sendFile(`/${imagePath}`, { root: path_1.default.join('./public') });
         }
         else {
-            const response = yield (0, imageSharpResizer_1.default)(file, h, w);
-            response.toFile(resizePath, (err) => {
-                if (err) {
-                    resize.status(403).send({
-                        ok: "failed",
-                        message: err.message,
+            fs_1.default.readFile(path_1.default.join('public', `${file}.jpg`), (err, file) => __awaiter(void 0, void 0, void 0, function* () {
+                const resizedBuffer = yield (0, imageSharpResizer_1.default)(file, h, w);
+                if (resizedBuffer) {
+                    resizedBuffer.toFile(resizePath, (err) => {
+                        if (err) {
+                            res.status(403).send({
+                                ok: 'failed',
+                                message: err.message,
+                            });
+                        }
+                        else {
+                            res.sendFile(`/${imagePath}`, { root: path_1.default.join('public') });
+                        }
                     });
                 }
-                else {
-                    res.sendFile(`/${imagePath}`, { root: path_1.default.join("./public") });
-                }
-            });
+            }));
         }
     }
     catch (e) {
@@ -50,9 +55,9 @@ const resize = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 const readThumbnailFull = (req, res, next) => {
-    const folder = "public";
+    const folder = 'public';
     const data = fs_1.default.readdirSync(folder);
-    console.log("data", data);
+    console.log('data', data);
     const thumbnails = data.map((data) => {
         return `http://localhost:8000/${data}`;
     });
