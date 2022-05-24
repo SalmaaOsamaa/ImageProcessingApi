@@ -19,4 +19,5 @@ npm install
 nodemon src/index.ts
 4- to run test 
 npm run build
+5- [API endpoints] (http://localhost:8000/api/images) (http://localhost:8000/api/thumbnail)
 
