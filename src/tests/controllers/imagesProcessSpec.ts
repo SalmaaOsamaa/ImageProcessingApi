@@ -1,6 +1,5 @@
-// @ts-nocheck
-
-import app from "../../app" //server file 
+// @ts-ignore
+import app from "../../app"; //server file 
 import supertest from "supertest";
 
 

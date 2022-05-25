@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import { SpecReporter } from "jasmine-spec-reporter";
 jasmine.getEnv.clearReporters();

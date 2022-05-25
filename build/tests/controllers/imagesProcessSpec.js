@@ -1,5 +1,4 @@
 "use strict";
-// @ts-nocheck
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -25,7 +24,6 @@ describe('image processing resize controller and middleware', () => {
         const filename = "image";
         const height = 100;
         const width = 100;
-        console.log(filename, height, width);
         const res = yield req.get(`/api/images?filename=${filename}&height=${height}&width=${width}`);
         expect(res.statusCode).toBe(200);
     }), 20000);

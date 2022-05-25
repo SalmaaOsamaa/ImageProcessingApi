@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 
 import sharpResize from "../../routes/imageSharpResizer";
 

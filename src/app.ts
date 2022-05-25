@@ -1,10 +1,9 @@
-// @ts-nocheck
-import express from 'express';
+
+import express,{Request, Response} from 'express';
 import router from "./routers";
-import errorHandler from './middleware/error';
 import logger from './middleware/logger';
 const app = express();
-const PORT: number = 8000;
+const PORT = 8000;
 app.use(express.static("public"));
 app.use(logger);
 
@@ -14,7 +13,7 @@ app.use(router);
 
 
 
-app.get("/", (req:Request, res:Response): void =>{
+app.get("/", (_req:Request, res:Response): void =>{
     res.send("hello");
 });
 

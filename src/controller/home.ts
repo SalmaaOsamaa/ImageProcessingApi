@@ -1,6 +1,5 @@
-// @ts-nocheck
 import fs from 'fs';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response} from 'express';
 import path from 'path';
 import { fileExists } from '../routes/fileExists';
 import sharpResize from '../routes/imageSharpResizer';
@@ -8,7 +7,6 @@ import sharpResize from '../routes/imageSharpResizer';
 const resize = async (
   req: Request,
   res: Response,
-  next: NextFunction
 ): Promise<void> => {
   const { filename, height, width } = req.query;
   const file: string = filename as unknown as string;
@@ -46,7 +44,6 @@ const resize = async (
 export const readThumbnailFull = (
   req: Request,
   res: Response,
-  next: NextFunction
 ): void => {
   const folder = 'public';
   const data = fs.readdirSync(folder);

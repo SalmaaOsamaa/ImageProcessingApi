@@ -13,12 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.readThumbnailFull = void 0;
-// @ts-nocheck
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const fileExists_1 = require("../routes/fileExists");
 const imageSharpResizer_1 = __importDefault(require("../routes/imageSharpResizer"));
-const resize = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const resize = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { filename, height, width } = req.query;
     const file = filename;
     const h = height ? parseInt(height, 10) : null;
@@ -54,7 +53,7 @@ const resize = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
         console.log(e);
     }
 });
-const readThumbnailFull = (req, res, next) => {
+const readThumbnailFull = (req, res) => {
     const folder = 'public';
     const data = fs_1.default.readdirSync(folder);
     console.log('data', data);
